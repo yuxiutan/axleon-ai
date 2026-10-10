@@ -40,7 +40,7 @@ iTRAQ CAN-BOX  →   清洗與行程識別   →    即時規則引擎   ┐
 
 | 模組 | 職責 |
 |---|---|
-| `server/services.js` | **指標的唯一定義處**。百公里油耗、時間加權怠速佔比、同車型中位數偏差、事件密度等皆在此定義一次，畫面、報表與 AI 共用。各頁資料的組裝函式亦集中於此。 |
+| `server/services.js` | 指標的唯一定義處。百公里油耗、時間加權怠速佔比、同車型中位數偏差、事件密度等皆在此定義一次，畫面、報表與 AI 共用。各頁資料的組裝函式亦集中於此。 |
 | `server/range.js` | 期間解析與區間換算：本日／本週／本月／本年／自訂。查詢結果依期間重新成形，官方固定樣本頁則刻意跳過此步驟。 |
 | `server/official-evidence.js` | 讀取官方樣本實算結果。載入時即驗證口徑（車輛數、趟次）是否相符，不符則拒絕啟動，避免資料換版後靜默錯誤。回傳副本以免被後續成形邏輯污染。 |
 | `server/provenance.js` | 資料來源三級標籤的定義，供畫面、報表與 Reviewer 共同引用。 |
@@ -55,7 +55,7 @@ iTRAQ CAN-BOX  →   清洗與行程識別   →    即時規則引擎   ┐
 | `server/ai/index.js` | 編排層：意圖路由 → 取事實 → 生成 → 檢核 → 快取。模型不可用時改走規則式答案。 |
 | `server/ai/intents.js` | 15 條規則式意圖，含一條專門攔截範圍外問題（情緒、姓名、身分、即時路況）。主管端與駕駛端套用不同子集。 |
 | `server/ai/answers.js` | 規則式答案，以及供 Reviewer 比對用的接地資料集（可引用的數值與代碼集合）。 |
-| `server/ai/llm.js` | **全系統唯一呼叫模型的模組**。封裝 Gemini provider、系統指令、明確快取、responseSchema 與逾時取消。 |
+| `server/ai/llm.js` | 全系統唯一呼叫模型的模組。封裝 Gemini provider、系統指令、明確快取、responseSchema 與逾時取消。 |
 | `server/ai/reviewer.js` | 六道確定性檢核。刻意不使用模型，以免與產生者共享盲點。 |
 | `server/ai/glossary.js` | 語意層字典，隨系統指令一併送出並快取。 |
 | `server/ai/report-analysis-v2.js` | 月報章節名稱的唯一來源，規則式輸出與模型指示都從此取，避免兩邊各寫一套。 |
@@ -64,7 +64,7 @@ iTRAQ CAN-BOX  →   清洗與行程識別   →    即時規則引擎   ┐
 
 ### 前端
 
-`public/index.html` 是營運主管 Web 與駕駛 App 的**單一來源**：同一份檔案依路徑與登入角色切換成兩個應用。沒有框架、沒有建置步驟，因此可離線快取、載入快，部署面也縮到最小。
+`public/index.html` 是營運主管 Web 與駕駛 App 的單一來源：同一份檔案依路徑與登入角色切換成兩個應用。沒有框架、沒有建置步驟，因此可離線快取、載入快，部署面也縮到最小。
 
 駕駛 App 以 PWA 形式運作：沒有訊號時操作先存在手機，回線後自動補傳。
 
@@ -110,7 +110,7 @@ AI 小助理的提問路徑另見 [ai-pipeline.md](ai-pipeline.md)。
 | `COOKIE_SECURE` | 部署於 HTTPS 後方時設 `true` |
 | `SESSION_SECRET` | Session 簽章金鑰。未設定會自動產生並存於資料卷 |
 | `SESSION_HOURS` | 登入效期，預設 12 小時 |
-| `DEMO_TOOLS` | 示範工具開關。**公開部署請設 `0`** |
+| `DEMO_TOOLS` | 示範工具開關，公開部署設 `0` |
 | `SMTP_*` / `REPORT_TO` | 月報寄送設定 |
 
 ---

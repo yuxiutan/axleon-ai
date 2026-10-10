@@ -1,9 +1,2 @@
-node_modules/
-.env
-.env.local
-*.db
-*.db-wal
-*.db-shm
-data/
 .DS_Store
 Thumbs.db

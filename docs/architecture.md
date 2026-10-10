@@ -56,7 +56,7 @@ iTRAQ CAN-BOX  →   清洗與行程識別   →    即時規則引擎   ┐
 | `server/ai/intents.js` | 15 條規則式意圖，含一條專門攔截範圍外問題（情緒、姓名、身分、即時路況）。主管端與駕駛端套用不同子集。 |
 | `server/ai/answers.js` | 規則式答案，以及供 Reviewer 比對用的接地資料集（可引用的數值與代碼集合）。 |
 | `server/ai/llm.js` | **全系統唯一呼叫模型的模組**。封裝 Gemini provider、系統指令、明確快取、responseSchema 與逾時取消。 |
-| `server/ai/reviewer.js` | 七道確定性檢核。刻意不使用模型，以免與產生者共享盲點。 |
+| `server/ai/reviewer.js` | 六道確定性檢核。刻意不使用模型，以免與產生者共享盲點。 |
 | `server/ai/glossary.js` | 語意層字典，隨系統指令一併送出並快取。 |
 | `server/ai/report-analysis-v2.js` | 月報章節名稱的唯一來源，規則式輸出與模型指示都從此取，避免兩邊各寫一套。 |
 

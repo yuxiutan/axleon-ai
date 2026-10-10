@@ -24,7 +24,16 @@
 | **駕駛 App（PWA）** | 第一線駕駛 | 出車前檢點、行駛中語音播報、免持提問、任務管理、抵達與交貨、延誤通知、SOS、收工回顧 |
 | **每月營運報告（Email）** | 車隊經營者 | 不需登入系統，固定時間收到含執行摘要與完整分析的營運彙整報告 |
 
-![系統架構](docs/images/architecture.png)
+![AXLEON AI 系統架構圖](docs/images/architecture.png)
+
+### 畫面
+
+| 營運主管 Web | 駕駛 App（PWA） |
+|---|---|
+| <img src="docs/images/manager-overview.png" alt="營運成效總覽" width="520"> | <img src="docs/images/driver-app.png" alt="駕駛端行駛中畫面" width="150"> |
+| 營運成效總覽：指標、趨勢與 AI 今日重點 | 行駛中：語音提醒與任務資訊，不需觸碰手機 |
+
+> 截圖中的營運數字為模擬資料（Mock Data），不代表任何真實車隊的營運成效。
 
 ---
 
@@ -90,7 +99,7 @@ AXLEON AI 要縮短「發現異常」到「採取行動」的時間，把月底�
 ```
 axleon-system/
 ├── server/
-│   ├── index.js              HTTP 路由與請求處理（約 45 個端點）
+│   ├── index.js              HTTP 路由與請求處理（51 個端點）
 │   ├── http.js               請求／回應工具、JSON 解析、錯誤轉換
 │   ├── auth.js               密碼雜湊驗證、簽章 Cookie、角色與登入節流
 │   ├── config.js             環境變數集中處、模型路由、Session 金鑰
@@ -109,7 +118,7 @@ axleon-system/
 │   │   ├── intents.js            15 條規則式意圖，含範圍外問題攔截
 │   │   ├── answers.js            規則式答案與接地資料集（模型不可用時的降級路徑）
 │   │   ├── llm.js                唯一呼叫模型的模組（Gemini provider）
-│   │   ├── reviewer.js           七道確定性檢核閘門
+│   │   ├── reviewer.js           六道確定性檢核閘門
 │   │   ├── glossary.js           語意層字典，隨系統指令一併快取
 │   │   └── report-analysis-v2.js 月報章節定義（規則式與模型路徑的唯一來源）
 │   ├── official/hino-summary.json  官方樣本實算結果（由匯入工具產生）
